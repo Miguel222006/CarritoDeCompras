@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito Premium</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">Carrito <span>Premium</span></h1>
+
+            <button id="open-cart-btn" class="btn-open-cart" aria-label="Abrir carrito de compras">
+
+                <span class="cart-icon" aria-hidden="true">🛒</span>
+                <span>Mi carrito</span>
+
+                <span id="cart-badge" class="cart-badge" aria-label="items en el carrito">0</span>
+
+            </button>
+        </div>
+    </header>
+
+    <!-- PRODUCTOS -->
+    <main class="main">
+        <h2 class="section-title">Nuestros <span>productos</span></h2>
+
+        <div id="products-grid" class="products-grid" role="list">
+        </div>
+    </main>
+
+    <div id="cart-overlay" class="cart-overlay" aria-hidden="true">
+    </div>
+
+
+</body>
+
+</html>
