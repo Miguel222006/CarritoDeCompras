@@ -1,16 +1,4 @@
 /**
- * logic.test.js
- * -------------
- * Pruebas unitarias para las funciones de logic.js.
- *
- * ¿Qué es una prueba unitaria?
- * Es una función que verifica que otra función hace exactamente lo que se espera.
- * Formato básico:
- *
- *   test("descripción de lo que se prueba", () => {
- *     expect( funcionQueProbo(argumentos) ).toBe( resultadoEsperado );
- *   });
- *
  * Comandos para correr las pruebas:
  *   npm test                  → corre las pruebas
  *   npm run test:coverage     → corre las pruebas y muestra el % de cobertura
@@ -27,10 +15,6 @@ const {
   clearCart
 } = require("../js/logic.js");
 
-// ─────────────────────────────────────────────
-// 🧰 DATOS DE PRUEBA (fixtures)
-// ─────────────────────────────────────────────
-
 /**
  * Estos son datos que usamos en las pruebas.
  * No son los productos reales, son datos simples para testear.
@@ -44,16 +28,9 @@ const mockCartWithItems = [
   { id: 2, name: "Teclado", price: 89.99, quantity: 1 }
 ];
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: addToCart()
-// ─────────────────────────────────────────────
+// PRUEBAS PARA: addToCart()
 
 describe("addToCart", () => {
-  /**
-   * 'describe' agrupa pruebas relacionadas.
-   * Es como un "capítulo" de pruebas.
-   */
-
   test("debe agregar un producto nuevo al carrito vacío", () => {
     const carritoVacio = [];
     const resultado = addToCart(carritoVacio, mockProduct1);
@@ -94,9 +71,7 @@ describe("addToCart", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: removeFromCart()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: removeFromCart()
 
 describe("removeFromCart", () => {
 
@@ -121,9 +96,7 @@ describe("removeFromCart", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: updateQuantity()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: updateQuantity()
 
 describe("updateQuantity", () => {
 
@@ -147,9 +120,7 @@ describe("updateQuantity", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: getItemSubtotal()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: getItemSubtotal()
 
 describe("getItemSubtotal", () => {
 
@@ -172,9 +143,7 @@ describe("getItemSubtotal", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: getCartTotal()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: getCartTotal()
 
 describe("getCartTotal", () => {
 
@@ -195,9 +164,7 @@ describe("getCartTotal", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: getCartCount()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: getCartCount()
 
 describe("getCartCount", () => {
 
@@ -216,9 +183,7 @@ describe("getCartCount", () => {
   });
 });
 
-// ─────────────────────────────────────────────
-// ✅ PRUEBAS PARA: clearCart()
-// ─────────────────────────────────────────────
+//PRUEBAS PARA: clearCart()
 
 describe("clearCart", () => {
 
