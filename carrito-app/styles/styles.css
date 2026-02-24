@@ -1,27 +1,17 @@
-/* =============================================
-   styles.css — Carrito Premium
-   Versión simplificada y limpia
-   ============================================= */
 
-/* ─────────────────────────────────────────────
-   VARIABLES: colores y valores que se repiten
-   ───────────────────────────────────────────── */
 :root {
-  --verde:       #4a7c59;   /* color principal, botones */
-  --verde-hover: #386144;   /* cuando pasas el mouse por botones */
-  --amarillo:    #e8a838;   /* acento, precio, logo */
-  --fondo:       #f7f5f2;   /* fondo de la página */
+  --verde:       #4a7c59;  
+  --verde-hover: #386144; 
+  --amarillo:    #e8a838;  
+  --fondo:       #f7f5f2;  
   --blanco:      #ffffff;
-  --texto:       #2b2b2b;   /* texto principal */
-  --texto-suave: #7a7a7a;   /* texto secundario */
-  --borde:       #e2ddd7;   /* bordes de tarjetas */
-  --radio:       10px;      /* bordes redondeados */
+  --texto:       #2b2b2b;   
+  --texto-suave: #7a7a7a;   
+  --borde:       #e2ddd7;   
+  --radio:       10px;      
   --sombra:      0 2px 12px rgba(0,0,0,0.08);
 }
 
-/* ─────────────────────────────────────────────
-   BASE: estilos que aplican a todo
-   ───────────────────────────────────────────── */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,7 +42,7 @@ img {
   position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%) translateY(-100px); /* empieza oculta arriba */
+  transform: translateX(-50%) translateY(-100px); 
   background-color: #2b2b2b;
   color: white;
   padding: 12px 28px;
@@ -63,15 +53,13 @@ img {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Cuando app.js agrega la clase 'show', baja y aparece */
+
 .notification.show {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
 
-/* ─────────────────────────────────────────────
-   HEADER
-   ───────────────────────────────────────────── */
+
 .header {
   background-color: var(--blanco);
   border-bottom: 1px solid var(--borde);
@@ -302,12 +290,10 @@ img {
   z-index: 300;
   display: flex;
   flex-direction: column;
-  /* Empieza fuera de pantalla */
   transform: translateX(100%);
   transition: transform 0.3s ease;
 }
 
-/* Cuando app.js agrega la clase 'open', entra desde la derecha */
 .cart-panel.open {
   transform: translateX(0);
 }
@@ -519,19 +505,15 @@ img {
    RESPONSIVE — pantallas pequeñas
    ───────────────────────────────────────────── */
 
-/* Tablet */
 @media (max-width: 768px) {
   .main {
     padding: 24px 16px;
   }
-
-  /* Oculta el texto del botón del header, solo muestra el ícono */
   .btn-open-cart span:last-of-type {
     display: none;
   }
 }
 
-/* Móvil */
 @media (max-width: 480px) {
   .products-grid {
     grid-template-columns: 1fr 1fr;
