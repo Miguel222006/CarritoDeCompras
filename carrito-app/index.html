@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito Premium</title>
+
+  <!-- Ruta correcta al CSS -->
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+
+  <!-- Notificación (aparece arriba cuando se elimina un producto) -->
+  <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <h1 class="logo">Carrito <span>Premium</span></h1>
+
+      <button id="open-cart-btn" class="btn-open-cart" aria-label="Abrir carrito de compras">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span>Mi carrito</span>
+        <span id="cart-badge" class="cart-badge" aria-label="items en el carrito">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PRODUCTOS -->
+  <main class="main">
+    <h2 class="section-title">Nuestros <span>productos</span></h2>
+    <div id="products-grid" class="products-grid" role="list">
+      <!-- Las tarjetas las genera app.js automáticamente -->
+    </div>
+  </main>
+
+  <!-- Fondo oscuro detrás del carrito -->
+  <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
+
+  <!-- PANEL LATERAL DEL CARRITO -->
+  <aside id="cart-panel" class="cart-panel" role="dialog" aria-label="Carrito de compras">
+    <div class="cart-header">
+      <h2 class="cart-title">🛒 Mi carrito</h2>
+      <button id="close-cart-btn" class="btn-close-cart" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <!-- Lista de items (la llena app.js) -->
+    <div id="cart-items" class="cart-items" role="list"></div>
+
+    <!-- Total y botón vaciar -->
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total:</span>
+        <span id="cart-total" class="cart-total-amount">$0.00</span>
+      </div>
+      <button id="clear-cart-btn" class="btn-clear-cart" aria-label="Vaciar todo el carrito">
+        Vaciar carrito
+      </button>
+    </div>
+  </aside>
+
+  <!-- SCRIPTS: el orden importa, no cambiar -->
+  <script src="js/data.js"></script>
+  <script src="js/logic.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

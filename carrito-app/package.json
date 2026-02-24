@@ -1,15 +1,13 @@
 {
-  "name": "carrito_compras",
+  "name": "carrito-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "Carrito de compras con HTML, CSS y JS puro. Pruebas con Jest.",
+  "main": "js/app.js",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
