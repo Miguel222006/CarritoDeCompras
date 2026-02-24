@@ -211,6 +211,9 @@ function attachProductEvents() {
         // Actualizamos la vista del carrito
         renderCart();
 
+         // Reproduce el sonido al agregar
+        playAddSound();
+
         // Animación en el botón para dar feedback visual
         button.textContent = "¡Agregado!";
         button.classList.add("btn-added");
@@ -321,11 +324,49 @@ clearCartBtn.addEventListener("click", () => {
   saveCart(cart);
   renderCart();
   showNotification("El carrito ha sido vaciado");
+  // Reproduce sonido al vaciar el carrito
+  playClearSound();
 });
+
+
+
+// SONIDOS
+
+// Reproduce el sonido al agregar un producto
+function playAddSound() {
+  const addSound = new Audio("assets/sounds/Cachin.mp3");
+  addSound.currentTime = 0;
+  
+  // play() retorna una promesa, esto maneja si el navegador la bloquea
+  addSound.play().catch(error => {
+    console.log("Error al reproducir sonido:", error);
+  });
+}
+
+// VACIAR CARRITO
+function playClearSound() {
+  const clearSound = new Audio("assets/sounds/Eliminar.mp3");
+  clearSound.play().catch(error => {
+    console.log("Error al reproducir sonido:", error);
+  });
+}
+
+// function playWelcomeSound() {
+//   const welcomeSound = new Audio("assets/sounds/Entrar.mp3");
+//   welcomeSound.play().catch(error => {
+//     console.log("Error al reproducir bienvenida:", error);
+//   });
+// }     DOCUMENTADO PORQUE SOLO SUENA AL HACER CLICK. LAMENTABLE
 
 // ─────────────────────────────────────────────
 // 🚀 INICIALIZACIÓN DE LA APP
 // ─────────────────────────────────────────────
+
+// Reproduce el sonido de bienvenida al primer clic del usuario
+// document.addEventListener("click", function reproducirBienvenida() {
+//   playWelcomeSound();
+//   document.removeEventListener("click", reproducirBienvenida);
+// }, { once: true });
 
 /**
  * Esta función se llama UNA VEZ cuando la página carga.
