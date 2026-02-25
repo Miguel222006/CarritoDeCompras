@@ -94,7 +94,7 @@ function renderProducts() {
   `).join(""); // .join("") une todos los strings sin separadores
 
   // Después de crear las tarjetas, les asignamos los eventos de clic
-  attachProductEvents();
+  // attachProductEvents();
 }
 
 // ─────────────────────────────────────────────
@@ -191,39 +191,28 @@ function showNotification(message) {
  * Se llama después de renderizar los productos.
  */
 function attachProductEvents() {
-  const addButtons = document.querySelectorAll(".btn-add-to-cart");
+  // Un solo evento en el contenedor padre en vez de uno por cada botón
+  productsGrid.onclick = (e) => {
+    const btn = e.target.closest(".btn-add-to-cart");
+    if (!btn) return;
 
-  addButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      // Obtenemos el id del producto desde el atributo data-id del botón
-      const productId = parseInt(button.getAttribute("data-id"));
+    const productId = parseInt(btn.getAttribute("data-id"));
+    const product = products.find(p => p.id === productId);
 
-      // Buscamos el producto en el array de productos por su id
-      const product = products.find(p => p.id === productId);
+    if (product) {
+      cart = addToCart(cart, product);
+      saveCart(cart);
+      renderCart();
+      playAddSound();
 
-      if (product) {
-        // Llamamos a la función de logic.js para actualizar el carrito
-        cart = addToCart(cart, product);
-
-        // Guardamos el nuevo carrito en LocalStorage
-        saveCart(cart);
-
-        // Actualizamos la vista del carrito
-        renderCart();
-
-         // Reproduce el sonido al agregar
-        playAddSound();
-
-        // Animación en el botón para dar feedback visual
-        button.textContent = "¡Agregado!";
-        button.classList.add("btn-added");
-        setTimeout(() => {
-          button.textContent = "Agregar al carrito";
-          button.classList.remove("btn-added");
-        }, 1000);
-      }
-    });
-  });
+      btn.textContent = "¡Agregado!";
+      btn.classList.add("btn-added");
+      setTimeout(() => {
+        btn.textContent = "Agregar al carrito";
+        btn.classList.remove("btn-added");
+      }, 1000);
+    }
+  };
 }
 
 // ─────────────────────────────────────────────
@@ -283,12 +272,16 @@ function attachCartEvents() {
  * Agrega la clase 'open' que activa la animación de entrada en CSS.
  */
 function openCart() {
+  // Primero abrimos el panel visualmente (inmediato)
   cartPanel.classList.add("open");
   cartOverlay.classList.add("visible");
-  // Bloqueamos el scroll del body para que no se mueva mientras el carrito está abierto
   document.body.style.overflow = "hidden";
+  // Luego renderizamos el contenido con un pequeño retraso
+  // Así el panel se abre rápido y el contenido aparece enseguida
+  requestAnimationFrame(() => {
+    renderCart();
+  });
 }
-
 /**
  * Cierra el panel lateral del carrito.
  */
@@ -333,11 +326,12 @@ clearCartBtn.addEventListener("click", () => {
 // SONIDOS
 
 // Reproduce el sonido al agregar un producto
+// Precargamos el sonido UNA SOLA VEZ al inicio
+const addSound = new Audio("assets/sounds/Cachin.mp3");
+addSound.preload = "auto"; // Le dice al navegador que lo cargue de inmediato
+
 function playAddSound() {
-  const addSound = new Audio("assets/sounds/Cachin.mp3");
   addSound.currentTime = 0;
-  
-  // play() retorna una promesa, esto maneja si el navegador la bloquea
   addSound.play().catch(error => {
     console.log("Error al reproducir sonido:", error);
   });
@@ -375,6 +369,8 @@ function playClearSound() {
 function init() {
   renderProducts();
   renderCart();
+  attachProductEvents();
+  addSound.load();
 }
 
 // Llamamos a init() para arrancar la app
