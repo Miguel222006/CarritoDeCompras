@@ -36,8 +36,10 @@ carrito-app/
 
 ## 🚀 Cómo usar la aplicación
 
-1. Abre el archivo `index.html` directamente en tu navegador.
-2. No necesitas servidor ni instalación para ver la app.
+1. Abre el archivo `index.html` directamente en tu navegador. (Descargar el .zip desde el apartado code en GitHub, o clonar el repositorio).
+2. Abrir el link de despliegue ubicado en la parte inferior derecha.
+3. No necesitas servidor ni instalación para ver la app.
+
 
 ---
 
